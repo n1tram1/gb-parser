@@ -16,7 +16,7 @@ pub fn parse(bytes: &[u8]) -> Result<instructions::Instruction, &'static str> {
     decode(opcode, bytes)
 }
 
-pub fn decode(opcode: u8, bytes: &[u8]) -> Result<instructions::Instruction, &'static str> {
+fn decode(opcode: u8, bytes: &[u8]) -> Result<instructions::Instruction, &'static str> {
     let inst = match opcode {
         0x00 => instructions::Nop::new(),
         _ => return Err("invalid instruction"),
