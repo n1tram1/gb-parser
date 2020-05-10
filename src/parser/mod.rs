@@ -1,4 +1,5 @@
 mod instructions;
+mod error;
 
 mod test_parser;
 
@@ -6,9 +7,9 @@ pub trait InstructionTrait {
     fn size(&self) -> usize;
 }
 
-pub fn parse(bytes: &[u8]) -> Result<instructions::Instruction, &'static str> {
+pub fn parse(bytes: &[u8]) -> Result<instructions::Instruction, error::ParserError> {
     if bytes.len() < 1 {
-        return Err("Not enough bytes to parse an instruction");
+        return Err(error::ParserError::NotEnoughBytes(bytes.len()));
     }
 
     let opcode = bytes[0];
@@ -16,10 +17,10 @@ pub fn parse(bytes: &[u8]) -> Result<instructions::Instruction, &'static str> {
     decode(opcode, bytes)
 }
 
-fn decode(opcode: u8, bytes: &[u8]) -> Result<instructions::Instruction, &'static str> {
+fn decode(opcode: u8, bytes: &[u8]) -> Result<instructions::Instruction, error::ParserError> {
     let inst = match opcode {
         0x00 => instructions::Nop::new(),
-        _ => return Err("invalid instruction"),
+        _ => return Err(error::ParserError::InvalidOpcode(opcode)),
     };
 
     Ok(inst.into())
