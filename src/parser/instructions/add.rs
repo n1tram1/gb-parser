@@ -14,11 +14,11 @@ impl Add {
     }
 }
 
-impl From<Add> for Instruction {
-    fn from(item: Add) -> Self {
-        Self::Add(item)
-    }
-}
+// impl From<Add> for Instruction {
+//     fn from(item: Add) -> Self {
+//         Self::Add(item)
+//     }
+// }
 
 impl InstructionTrait for Add {
     fn size(&self) -> usize {

@@ -12,8 +12,10 @@ fn print_disass(path: &path::Path) {
     let mut buffer: Vec<u8> = Vec::new();
     file.read_to_end(&mut buffer).unwrap();
 
-    let inst =  parser::parse(&buffer).map_err(|e| panic!("{}", e));
-    println!("{:?}", inst);
+    let inst_res =  parser::parse(&buffer).map_err(|e| panic!("{}", e));
+    if let Ok(inst) = inst_res {
+        println!("{}", inst);
+    }
 }
 
 fn main() {
