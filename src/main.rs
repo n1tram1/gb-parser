@@ -4,7 +4,7 @@ use std::path;
 use std::fs;
 use std::io::Read;
 
-extern crate parser;
+use parser;
 
 fn print_disass(path: &path::Path) {
     println!("printing {}", path.display());
