@@ -17,7 +17,7 @@ pub enum Instruction {
 }
 
 impl Instruction {
-    fn get_instruction(&self) -> &dyn InstructionTrait {
+    pub fn get_instruction(&self) -> &dyn InstructionTrait {
         match self {
             Self::Nop(inst) => inst,
             Self::Ld(inst) => inst,
