@@ -1,8 +1,9 @@
 [package]
 name = "gb-parser"
 version = "0.0.1"
-authors = ["Martin Schmidt <martin.schmidt@epita.fr>"]
+authors = ["Martin Schmidt <martin.schmidt@lse.epita.fr>"]
 edition = "2018"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
