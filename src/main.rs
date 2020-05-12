@@ -1,9 +1,10 @@
-mod parser;
 
 use std::env;
 use std::path;
 use std::fs;
 use std::io::Read;
+
+extern crate parser;
 
 fn print_disass(path: &path::Path) {
     println!("printing {}", path.display());
