@@ -1,6 +1,6 @@
 use super::super::error;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Reg16 {
     AF,
     BC,
@@ -16,7 +16,7 @@ impl std::fmt::Display for Reg16 {
     }
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Operand {
     Imm8(u8),
     Imm16(u16),
