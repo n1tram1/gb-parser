@@ -39,6 +39,20 @@ impl Operand {
 
         Ok(Operand::Imm16(u16::from_le_bytes([bytes[0], bytes[1]])))
     }
+
+    pub fn is_immediate(&self) -> bool {
+        match self {
+            Self::Imm8(_) | Self::Imm16(_) => true,
+            _ => false,
+        }
+    }
+
+    pub fn is_register(&self) -> bool {
+        match self {
+            Self::Reg16(_) => true,
+            _ => false,
+        }
+    }
 }
 
 impl Operand {

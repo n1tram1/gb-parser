@@ -1,6 +1,6 @@
 [package]
 name = "gb-parser"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["Martin Schmidt <martin.schmidt@lse.epita.fr>"]
 edition = "2018"
 license = "MIT"

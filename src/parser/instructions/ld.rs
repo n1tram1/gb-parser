@@ -17,6 +17,14 @@ impl Ld {
     pub fn new_instruction(dst: Operand, src: Operand, size: usize) -> Instruction {
         Instruction::Ld(Self::new(dst, src, size))
     }
+
+    pub fn get_dst(&self) -> &Operand {
+        &self.dst
+    }
+
+    pub fn get_src(&self) -> &Operand {
+        &self.src
+    }
 }
 
 impl From<Ld> for Instruction {
