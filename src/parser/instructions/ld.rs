@@ -14,10 +14,6 @@ impl Ld {
         Ld { dst, src, size }
     }
 
-    pub fn new_instruction(dst: Operand, src: Operand, size: usize) -> Instruction {
-        Instruction::Ld(Self::new(dst, src, size))
-    }
-
     pub fn get_dst(&self) -> &Operand {
         &self.dst
     }

@@ -1,5 +1,24 @@
 use super::super::error;
 
+
+#[derive(Debug, PartialEq, Copy, Clone)]
+pub enum Reg8 {
+    A,
+    F,
+    B,
+    C,
+    D,
+    E,
+    H,
+    L,
+}
+
+impl std::fmt::Display for Reg8 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{:?}", self)
+    }
+}
+
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Reg16 {
     AF,
@@ -20,7 +39,9 @@ impl std::fmt::Display for Reg16 {
 pub enum Operand {
     Imm8(u8),
     Imm16(u16),
+    Reg8(Reg8),
     Reg16(Reg16),
+    DerefReg(Reg16),
 }
 
 impl Operand {
@@ -49,7 +70,7 @@ impl Operand {
 
     pub fn is_register(&self) -> bool {
         match self {
-            Self::Reg16(_) => true,
+            Self::Reg8(_) | Self::Reg16(_) => true,
             _ => false,
         }
     }
@@ -69,7 +90,9 @@ impl std::fmt::Display for Operand {
         match self {
             Self::Imm8(byte) => write!(f, "{:#X}", byte),
             Self::Imm16(word) => write!(f, "{:#X}", word),
+            Self::Reg8(reg8) => write!(f, "{}", reg8),
             Self::Reg16(reg16) => write!(f, "{}", reg16),
+            Self::DerefReg(reg16) => write!(f, "{}", reg16),
         }
     }
 }
